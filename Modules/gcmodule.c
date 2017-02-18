@@ -25,7 +25,7 @@
 
 #include "Python.h"
 #include "frameobject.h"        /* for PyFrame_ClearFreeList */
-#include "pydtrace.h"
+#include "cpython_inst.h"
 #include "pytime.h"             /* for _PyTime_GetMonotonicClock() */
 
 /*[clinic input]
@@ -933,8 +933,8 @@ collect(int generation, Py_ssize_t *n_collected, Py_ssize_t *n_uncollectable,
         PySys_WriteStderr("\n");
     }
 
-    if (PyDTrace_GC_START_ENABLED())
-        PyDTrace_GC_START(generation);
+    if (PyTraceEnabled(gc__start))
+        PyTrace(gc__start, generation);
 
     /* update collection and allocation counters */
     if (generation+1 < NUM_GENERATIONS)
@@ -1081,8 +1081,8 @@ collect(int generation, Py_ssize_t *n_collected, Py_ssize_t *n_uncollectable,
     stats->collected += m;
     stats->uncollectable += n;
 
-    if (PyDTrace_GC_DONE_ENABLED())
-        PyDTrace_GC_DONE(n+m);
+    if (PyTraceEnabled(gc__done))
+        PyTrace(gc__done, n+m);
 
     return n+m;
 }
