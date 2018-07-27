@@ -6,7 +6,7 @@ provider python {
     probe instance__new__start(const char *, const char *);
     probe instance__new__done(const char *, const char *);
     probe instance__delete__start(const char *, const char *);
-    probe instance__delete__done(const char *, const char *);
+    probe instance__delete__done(const char *, int);
     probe line(const char *, const char *, int);
     probe gc__start(int);
     probe gc__done(long);

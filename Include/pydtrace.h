@@ -30,10 +30,10 @@ static inline void PyDTrace_FUNCTION_ENTRY(const char *arg0, const char *arg1, i
 static inline void PyDTrace_FUNCTION_RETURN(const char *arg0, const char *arg1, int arg2) {}
 static inline void PyDTrace_GC_START(int arg0) {}
 static inline void PyDTrace_GC_DONE(int arg0) {}
-static inline void PyDTrace_INSTANCE_NEW_START(int arg0) {}
-static inline void PyDTrace_INSTANCE_NEW_DONE(int arg0) {}
-static inline void PyDTrace_INSTANCE_DELETE_START(int arg0) {}
-static inline void PyDTrace_INSTANCE_DELETE_DONE(int arg0) {}
+static inline void PyDTrace_INSTANCE_NEW_START(const char *arg, const char *arg1) {}
+static inline void PyDTrace_INSTANCE_NEW_DONE(const char *arg0, const char *arg1) {}
+static inline void PyDTrace_INSTANCE_DELETE_START(const char *arg0, const char *arg1) {}
+static inline void PyDTrace_INSTANCE_DELETE_DONE(const char *arg0, int arg1) {}
 static inline void PyDTrace_IMPORT_FIND_LOAD_START(const char *arg0) {}
 static inline void PyDTrace_IMPORT_FIND_LOAD_DONE(const char *arg0, int arg1) {}
 
